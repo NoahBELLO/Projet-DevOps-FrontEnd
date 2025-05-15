@@ -1,0 +1,19 @@
+services:
+  frontend:
+    container_name: frontend
+    build:
+      context: ../frontend
+      dockerfile: Dockerfile
+    restart: always
+    ports:
+      - "4200:4200"
+    volumes:
+      - ../frontend:/usr/src/app
+    networks:
+      - reseau_projet
+
+# Pour créer un network : docker network create "nom_du_reseau"
+networks:
+  reseau_projet:
+    driver: bridge
+    external: true
